@@ -2,7 +2,7 @@ import axios from "axios";
 import { useAuthStore } from "@/stores/AuthStore";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://clothingstorebe-production.up.railway.app",
   // timeout: 5000,
   headers: {
     "Content-Type": "application/json",

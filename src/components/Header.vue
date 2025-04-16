@@ -5,9 +5,8 @@
       <router-link class="navbar-brand fw-bold text-primary" to="/">🛍 CLOTHING SHOP</router-link>
 
       <!-- Thông báo tài khoản (modal) -->
-      <div v-if="showAccountNotice" class="alert alert-info d-none d-lg-block" style="margin: 0 20px; font-size: 14px;">
+      <div class="alert alert-info d-none d-lg-block" style="margin: 0 20px; font-size: 14px;">
         🔔 Dùng tài khoản: <strong>admin@gmail.com</strong> | Mật khẩu: <strong>admin</strong> để đăng nhập!
-        <button class="btn btn-sm btn-primary ms-2" @click="hideNotice">Đóng</button>
       </div>
 
       <!-- Toggle Button (Mobile) -->
@@ -86,14 +85,6 @@ const router = useRouter();
 
 const isAuthenticated = computed(() => authStore.isAuthenticated());
 const userInfo = computed(() => authStore.user || { email: 'Không có email', role: 'CUSTOMER' });
-
-  // Quản lý trạng thái thông báo
-const showAccountNotice = ref(!localStorage.getItem('hideAccountNotice'));
-
-const hideNotice = () => {
-  showAccountNotice.value = false;
-  localStorage.setItem('hideAccountNotice', 'true');
-};
 
 watchEffect(async () => {
   if (authStore.accessToken) {
